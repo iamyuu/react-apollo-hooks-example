@@ -1,6 +1,6 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '../apollo';
 
 const GET_SINGLE_POST = gql`
   {
@@ -12,18 +12,17 @@ const GET_SINGLE_POST = gql`
 `
 
 function Screen() {
-  const { data, loading, error } = useQuery(GET_SINGLE_POST);
+  const { data, loading } = useQuery(GET_SINGLE_POST);
 
-  if (loading) return <div>Loading...</div>
-  if (error) return <div>{error.message}</div>
+  if (loading) return <div>Loading...</div>;
 
   const { title, body } = data.post;
 
   return (
-    <div>
+    <section>
       <h1>{title}</h1>
       <p>{body}</p>
-    </div>
+    </section>
   )
 }
 

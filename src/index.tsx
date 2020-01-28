@@ -5,6 +5,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo-hooks';
 
 import Screen from './screens';
+import ErrorBoundary from './components/did-catch';
 
 const client = new ApolloClient({
   uri: 'https://graphqlzero.almansi.me/api'
@@ -12,7 +13,9 @@ const client = new ApolloClient({
 
 const App = (
   <ApolloProvider client={client}>
-    <Screen />
+    <ErrorBoundary>
+      <Screen />
+    </ErrorBoundary>
   </ApolloProvider>
 );
 
