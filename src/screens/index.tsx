@@ -1,18 +1,13 @@
 import React from 'react';
-import gql from 'graphql-tag';
 import { useQuery } from '../apollo';
-
-const GET_SINGLE_POST = gql`
-  {
-    post(id: 1) {
-      title
-      body
-    }
-  }
-`
+import getSinglePostQuery from '../graphql/get-single-post.graphql';
 
 function Screen() {
-  const { data } = useQuery(GET_SINGLE_POST);
+  const { data } = useQuery(getSinglePostQuery, {
+    variables: {
+      id: 1
+    }
+  });
 
   const { title, body } = data.post;
 

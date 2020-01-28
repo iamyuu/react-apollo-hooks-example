@@ -1,0 +1,6 @@
+query getSinglePost($id: ID!) {
+  post(id: $id) {
+    title
+    body
+  }
+}
