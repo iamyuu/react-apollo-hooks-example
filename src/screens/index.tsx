@@ -12,9 +12,7 @@ const GET_SINGLE_POST = gql`
 `
 
 function Screen() {
-  const { data, loading } = useQuery(GET_SINGLE_POST);
-
-  if (loading) return <div>Loading...</div>;
+  const { data } = useQuery(GET_SINGLE_POST);
 
   const { title, body } = data.post;
 

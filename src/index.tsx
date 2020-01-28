@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { render } from 'react-dom';
 
 import ApolloClient from 'apollo-boost';
@@ -11,11 +11,15 @@ const client = new ApolloClient({
   uri: 'https://graphqlzero.almansi.me/api'
 });
 
+const Loading = () => <div>Loading...</div>
+
 const App = (
   <ApolloProvider client={client}>
-    <ErrorBoundary>
-      <Screen />
-    </ErrorBoundary>
+    <Suspense fallback={<Loading />}>
+      <ErrorBoundary>
+        <Screen />
+      </ErrorBoundary>
+    </Suspense>
   </ApolloProvider>
 );
 
