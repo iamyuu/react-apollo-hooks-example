@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '../apollo';
-import getSinglePostQuery from '../graphql/get-single-post.graphql';
+import getSinglePostQuery from '../graphql/get-single-post-query.graphql';
 
 function Screen() {
   const { data } = useQuery(getSinglePostQuery, {
